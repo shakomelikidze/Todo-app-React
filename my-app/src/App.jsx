@@ -33,7 +33,17 @@ function App() {
           <button onClick={toggleDarkMode}>{dark}</button>
         </header>
         <section>
-          <input style={inputBackgroundColor} className='input' type="text" />
+          <svg className='circle' xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
+            <circle cx="12" cy="12" r="12" stroke="#393A4B"/>
+          </svg>
+          <div className="input-div">
+            <input 
+            style={inputBackgroundColor} 
+            className='input' 
+            type="text"
+            placeholder='Create a new todo…'
+            />
+          </div>
         </section>
         <footer>
           <p style={footerColor} className='footer-text'>

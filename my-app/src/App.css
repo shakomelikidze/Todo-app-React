@@ -54,6 +54,18 @@ section {
   background: #FFF;
   margin-top: 20px;
   border: none;
+  color: #767992;
+  font-family: Josefin Sans;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -0.167px;
+  padding-left: 72px;
+}
+
+.circle {
+  position: relative;
+  top: 67px;
+  left: 24px;
 }
 
 .footer-text {
@@ -62,4 +74,19 @@ section {
   font-weight: 400;
   letter-spacing: -0.194px;
   margin-top: 49px;
+}
+
+@media screen and (max-width: 500px) {
+  .input {
+    height: 48px;
+    font-size: 12px;
+    padding-left: 52px;
+  }
+
+  .circle {
+    width: 20px;
+    position: relative;
+    top: 60px;
+    left: 20px;
+  }
 }
