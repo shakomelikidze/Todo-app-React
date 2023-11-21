@@ -21,6 +21,7 @@
   width: 100%;
   height: 300px;
   margin-bottom: -230px;
+  background-repeat: no-repeat;
 }
 
 header {
@@ -38,6 +39,12 @@ header {
   font-size: 40px;
   font-weight: 700;
   letter-spacing: 15px;
+}
+
+.dark-mode-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
 
 section {
@@ -64,8 +71,34 @@ section {
 
 .circle {
   position: relative;
-  top: 67px;
+  top: 65px;
   left: 24px;
+}
+
+.tasks-footer {
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 24px;
+  padding-right: 24px;
+  margin-top: 15px;
+}
+
+.tasks-footer-p {
+  color: #5B5E7E;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.194px;
+}
+
+.filter {
+  width: 150px;
+  display: flex;
+  flex: row;
+  justify-content: space-between;
 }
 
 .footer-text {
@@ -84,9 +117,22 @@ section {
   }
 
   .circle {
-    width: 20px;
+    width: 18px;
     position: relative;
-    top: 60px;
+    top: 57px;
     left: 20px;
+  }
+
+  .tasks-footer {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .tasks-footer-p {
+    font-size: 12px;
+  }
+
+  .filter {
+    width: 120px;
   }
 }

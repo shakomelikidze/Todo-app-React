@@ -1,7 +1,10 @@
 import { useState } from 'react'
 import './App.css'
-import dayImage from './images/day.jpg';
-import darkImage from './images/dark.jpg';
+import dayImage from './images/assets/bg-desktop-dark.jpg';
+import darkImage from './images/assets/bg-desktop-light.jpg';
+import moonIcon from './images/assets/icon-moon.svg';
+import sunIcon from './images/assets/icon-sun.svg';
+import circle from './images/assets/circle.svg';
 
 function App() {
   const [dark, setDark] = useState('mtvare');
@@ -20,6 +23,9 @@ function App() {
     ? '0px 35px 50px -15px rgba(0, 0, 0, 0.50)'
     : '0px 35px 50px -15px rgba(194, 195, 214, 0.50)'
   }
+  const taskBackgroundColor = {
+    backgroundColor : dark === 'mze' ? '#25273D' :  '#FFF'
+  }
   const footerColor = {
     color : dark === 'mze' ? '#5B5E7E' : '#9495A5'
   }
@@ -30,12 +36,12 @@ function App() {
         <div style={getBackgroundImage} className='background-iamge'></div>
         <header>
           <h1 className='logo'>TODO</h1>
-          <button onClick={toggleDarkMode}>{dark}</button>
+          <button className='dark-mode-btn' onClick={toggleDarkMode}>
+            <img src={dark === 'mtvare' ? moonIcon : sunIcon} alt='dark mode toggle'/>
+          </button>
         </header>
         <section>
-          <svg className='circle' xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
-            <circle cx="12" cy="12" r="12" stroke="#393A4B"/>
-          </svg>
+          <img className='circle' src={circle} alt="circle" />
           <div className="input-div">
             <input 
             style={inputBackgroundColor} 
@@ -43,6 +49,21 @@ function App() {
             type="text"
             placeholder='Create a new todo…'
             />
+          </div>
+          <div className="tasks-div">
+            <div className="todo"></div>
+            <div className="todo"></div>
+            <div className="todo"></div>
+            <div className="todo"></div>
+            <div style={taskBackgroundColor} className="tasks-footer">
+              <p className='tasks-footer-p'>5 items left</p>
+              <div className="filter">
+                <p className='tasks-footer-p'>All</p>
+                <p className='tasks-footer-p'>Active</p>
+                <p className='tasks-footer-p'>Completed</p>
+              </div>
+              <p className='tasks-footer-p'>Clear Completed</p>
+            </div>
           </div>
         </section>
         <footer>
