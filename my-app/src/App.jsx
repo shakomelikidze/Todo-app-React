@@ -8,9 +8,6 @@ import circle from './images/assets/circle.svg';
 
 function App() {
   const [dark, setDark] = useState('mtvare');
-
-
-
   const [inputValue, setInputValue] = useState('');
   const [todos, setTodos] = useState([]);
   const handleInputChange = (e) => {
@@ -22,10 +19,6 @@ function App() {
       setInputValue('');
     }
   };
-
-
-
-
   const toggleDarkMode = () => {
     setDark(dark === 'mtvare' ? 'mze' : 'mtvare')
   }
@@ -43,6 +36,9 @@ function App() {
   }
   const lineBackgroundColor = {
     backgroundColor : dark === 'mze' ? '#393A4B' : '#E3E4F1'
+  }
+  const todoTextColor = {
+    color : dark === 'mze' ? '#C8CBE7' : '#494C6B'
   }
   const taskBackgroundColor = {
     backgroundColor : dark === 'mze' ? '#25273D' :  '#FFF'
@@ -75,21 +71,22 @@ function App() {
             />
           </div>
           <div className="tasks-div">
-            {/* <div style={inputBackgroundColor} className="todo">
-              <div style={lineBackgroundColor} className="line"></div>
-            </div> */}
             {todos.map((todo, index) => (
-              <div 
-                key={index} 
-                className="todo"
-                style={inputBackgroundColor}
-              >
+              <>
+                <div 
+                  key={index} 
+                  className="todo"
+                  style={inputBackgroundColor}
+                >
+                  <img className='todolist-circle' src={circle}/>
+                  <span style={todoTextColor} className='todo-text'>{todo}</span>
+                </div>
                 <div style={lineBackgroundColor} className="line"></div>
-                <span>{todo}</span>
-              </div>
+              </>
+              
             ))}
             <div style={taskBackgroundColor} className="tasks-footer">
-              <p className='tasks-footer-p'>5 items left</p>
+              <p className='tasks-footer-p'>{todos.length} items left</p>
               <div className="filter">
                 <p className='tasks-footer-p cursor-pointer'>All</p>
                 <p className='tasks-footer-p cursor-pointer'>Active</p>
