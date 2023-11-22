@@ -8,6 +8,24 @@ import circle from './images/assets/circle.svg';
 
 function App() {
   const [dark, setDark] = useState('mtvare');
+
+
+
+  const [inputValue, setInputValue] = useState('');
+  const [todos, setTodos] = useState([]);
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  }
+  const handleEnterPress = (e) => {
+    if (e.key === 'Enter' && inputValue.trim() !== '') {
+      setTodos([...todos, inputValue.trim()]);
+      setInputValue('');
+    }
+  };
+
+
+
+
   const toggleDarkMode = () => {
     setDark(dark === 'mtvare' ? 'mze' : 'mtvare')
   }
@@ -22,6 +40,9 @@ function App() {
     boxShadow : dark === 'mze' 
     ? '0px 35px 50px -15px rgba(0, 0, 0, 0.50)'
     : '0px 35px 50px -15px rgba(194, 195, 214, 0.50)'
+  }
+  const lineBackgroundColor = {
+    backgroundColor : dark === 'mze' ? '#393A4B' : '#E3E4F1'
   }
   const taskBackgroundColor = {
     backgroundColor : dark === 'mze' ? '#25273D' :  '#FFF'
@@ -44,25 +65,37 @@ function App() {
           <img className='circle' src={circle} alt="circle" />
           <div className="input-div">
             <input 
-            style={inputBackgroundColor} 
-            className='input' 
-            type="text"
-            placeholder='Create a new todo…'
+              style={inputBackgroundColor} 
+              className='input' 
+              type="text"
+              placeholder='Create a new todo…'
+              value={inputValue}
+              onChange={handleInputChange}
+              onKeyPress={handleEnterPress}
             />
           </div>
           <div className="tasks-div">
-            <div className="todo"></div>
-            <div className="todo"></div>
-            <div className="todo"></div>
-            <div className="todo"></div>
+            {/* <div style={inputBackgroundColor} className="todo">
+              <div style={lineBackgroundColor} className="line"></div>
+            </div> */}
+            {todos.map((todo, index) => (
+              <div 
+                key={index} 
+                className="todo"
+                style={inputBackgroundColor}
+              >
+                <div style={lineBackgroundColor} className="line"></div>
+                <span>{todo}</span>
+              </div>
+            ))}
             <div style={taskBackgroundColor} className="tasks-footer">
               <p className='tasks-footer-p'>5 items left</p>
               <div className="filter">
-                <p className='tasks-footer-p'>All</p>
-                <p className='tasks-footer-p'>Active</p>
-                <p className='tasks-footer-p'>Completed</p>
+                <p className='tasks-footer-p cursor-pointer'>All</p>
+                <p className='tasks-footer-p cursor-pointer'>Active</p>
+                <p className='tasks-footer-p cursor-pointer'>Completed</p>
               </div>
-              <p className='tasks-footer-p'>Clear Completed</p>
+              <p className='tasks-footer-p cursor-pointer'>Clear Completed</p>
             </div>
           </div>
         </section>
