@@ -16,8 +16,8 @@ function App() {
   const handleEnterPress = (e) => {
     if (e.key === 'Enter' && inputValue.trim() !== '') {
       if (todos.length < 5) {
-        setTodos([...todos, inputValue.trim()]);
-      } 
+        setTodos([...todos, { text: inputValue.trim(), completed: false }]);
+      }
       setInputValue('');
     }
   };
@@ -49,6 +49,10 @@ function App() {
     color : dark === 'mze' ? '#5B5E7E' : '#9495A5'
   }
 
+
+
+
+
   return (
     <>
       <div style={bodyBackgroundColor} className='main' >
@@ -77,12 +81,16 @@ function App() {
               <>
                 <div 
                   key={index} 
-                  className="todo"
+                  className='todo'
                   style={inputBackgroundColor}
                 >
                   <img className='todolist-circle' src={circle}/>
-                  <input type="checkbox" className="todo-checkbox" />
-                  <span style={todoTextColor} className='todo-text'>{todo}</span>
+                  <input 
+                    type="checkbox" 
+                    className="todo-checkbox" 
+                    onChange={() => toggleTodoCompletion(index)}
+                  />
+                  <span style={todoTextColor} className='todo-text'>{todo.text}</span>
                 </div>
                 <div style={lineBackgroundColor} className="line"></div>
               </>
@@ -95,7 +103,9 @@ function App() {
                 <p className='tasks-footer-p cursor-pointer'>Active</p>
                 <p className='tasks-footer-p cursor-pointer'>Completed</p>
               </div>
-              <p className='tasks-footer-p cursor-pointer'>Clear Completed</p>
+              <p className='tasks-footer-p cursor-pointer'>
+                Clear Completed
+              </p>
             </div>
           </div>
         </section>
