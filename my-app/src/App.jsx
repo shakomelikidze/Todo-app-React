@@ -15,7 +15,9 @@ function App() {
   }
   const handleEnterPress = (e) => {
     if (e.key === 'Enter' && inputValue.trim() !== '') {
-      setTodos([...todos, inputValue.trim()]);
+      if (todos.length < 5) {
+        setTodos([...todos, inputValue.trim()]);
+      } 
       setInputValue('');
     }
   };
@@ -79,6 +81,7 @@ function App() {
                   style={inputBackgroundColor}
                 >
                   <img className='todolist-circle' src={circle}/>
+                  <input type="checkbox" className="todo-checkbox" />
                   <span style={todoTextColor} className='todo-text'>{todo}</span>
                 </div>
                 <div style={lineBackgroundColor} className="line"></div>

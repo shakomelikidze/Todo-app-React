@@ -21,7 +21,6 @@
   width: 100%;
   height: 300px;
   margin-bottom: -230px;
-  background-repeat: no-repeat;
 }
 
 header {
@@ -101,6 +100,25 @@ section {
   font-size: 18px;
   font-weight: 400;
   letter-spacing: -0.25px;
+  position: relative;
+  left: -20px;
+}
+
+.todo-checkbox {
+  position: relative;
+  left: -48px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+
+  /* Remove default checkbox styles */
+  appearance: none;
+}
+
+.todo-checkbox:checked {
+  background-color: #C058F3; 
+  border: 1px solid #55DDFF; 
 }
 
 .line {
@@ -172,6 +190,10 @@ section {
   }
 
   .tasks-footer-p {
+    font-size: 12px;
+  }
+
+  .todo-text {
     font-size: 12px;
   }
 
