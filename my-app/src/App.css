@@ -66,6 +66,7 @@ section {
   font-weight: 400;
   letter-spacing: -0.167px;
   padding-left: 72px;
+  outline: none;
 }
 
 .circle {

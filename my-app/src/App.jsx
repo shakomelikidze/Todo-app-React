@@ -11,7 +11,6 @@ function App() {
   const [dark, setDark] = useState('mtvare');
   const [inputValue, setInputValue] = useState('');
   const [todos, setTodos] = useState([]);
-  // const [removeTodo, setRemoveTodo] = useState();
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
   }
