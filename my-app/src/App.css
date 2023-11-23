@@ -75,7 +75,9 @@ section {
 }
 
 .tasks-div {
-  padding-top: 24px;
+  margin-top: 24px;
+  max-height: 450px;
+  overflow-y: auto;
 }
 
 .todo {
@@ -178,6 +180,16 @@ section {
 }
 
 @media screen and (max-width: 500px) {
+  .tasks-div {
+    margin-top: 10px;
+    max-height: 320px;
+    overflow-y: auto;
+  }
+
+  .todo {
+    height: 48px;
+  }
+  
   .input {
     height: 48px;
     font-size: 12px;

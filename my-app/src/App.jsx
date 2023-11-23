@@ -17,10 +17,8 @@ function App() {
   }
   const handleEnterPress = (e) => {
     if (e.key === 'Enter' && inputValue.trim() !== '') {
-      if (todos.length < 5) {
-        setTodos([...todos, { text: inputValue.trim(), completed: false }]);
-      }
-      setInputValue('');
+      setTodos([...todos, { text: inputValue.trim(), completed: false }]);
+      setInputValue('')
     }
   };
   const toggleDarkMode = () => {
@@ -109,6 +107,7 @@ function App() {
               </div>
               
             ))}
+          </div>
             <div style={taskBackgroundColor} className="tasks-footer">
               <p className='tasks-footer-p'>{todos.length} items left</p>
               <div className="filter">
@@ -120,7 +119,6 @@ function App() {
                 Clear Completed
               </p>
             </div>
-          </div>
         </section>
         <footer>
           <p style={footerColor} className='footer-text'>
