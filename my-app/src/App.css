@@ -87,6 +87,7 @@ section {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 }
 
 .todolist-circle {
@@ -119,6 +120,12 @@ section {
 .todo-checkbox:checked {
   background-color: #C058F3; 
   border: 1px solid #55DDFF; 
+}
+
+.cross-btn {
+  background-color: transparent;
+  border: none;
+  margin-right: 24px;
 }
 
 .line {
@@ -182,6 +189,11 @@ section {
     position: relative;
     top: 57px;
     left: 20px;
+  }
+
+  .cross-img {
+    width: 12px;
+    height: 12px;
   }
 
   .tasks-footer {

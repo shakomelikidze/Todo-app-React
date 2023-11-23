@@ -1,15 +1,17 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
 import dayImage from './images/assets/bg-desktop-dark.jpg';
 import darkImage from './images/assets/bg-desktop-light.jpg';
 import moonIcon from './images/assets/icon-moon.svg';
 import sunIcon from './images/assets/icon-sun.svg';
 import circle from './images/assets/circle.svg';
+import cross from './images/assets/icon-cross.svg';
 
 function App() {
   const [dark, setDark] = useState('mtvare');
   const [inputValue, setInputValue] = useState('');
   const [todos, setTodos] = useState([]);
+  // const [removeTodo, setRemoveTodo] = useState();
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
   }
@@ -24,6 +26,16 @@ function App() {
   const toggleDarkMode = () => {
     setDark(dark === 'mtvare' ? 'mze' : 'mtvare')
   }
+  const toggleTodoCompletion = (index) => {
+    const updatedTodos = [...todos];
+    updatedTodos[index].completed = !updatedTodos[index].completed;
+    setTodos(updatedTodos);
+  };
+  const removeTodo = (index) => {
+    const updatedTodos = [...todos];
+    updatedTodos.splice(index, 1);
+    setTodos(updatedTodos);
+  };
   const bodyBackgroundColor = {
     backgroundColor: dark === 'mze' ? '#171823' : '#FAFAFA'
   }
@@ -48,11 +60,6 @@ function App() {
   const footerColor = {
     color : dark === 'mze' ? '#5B5E7E' : '#9495A5'
   }
-
-
-
-
-
   return (
     <>
       <div style={bodyBackgroundColor} className='main' >
@@ -78,22 +85,28 @@ function App() {
           </div>
           <div className="tasks-div">
             {todos.map((todo, index) => (
-              <>
+              <div>
                 <div 
-                  key={index} 
+                  key={todo.id} 
                   className='todo'
-                  style={inputBackgroundColor}
+                  style={taskBackgroundColor}
                 >
-                  <img className='todolist-circle' src={circle}/>
-                  <input 
-                    type="checkbox" 
-                    className="todo-checkbox" 
-                    onChange={() => toggleTodoCompletion(index)}
-                  />
-                  <span style={todoTextColor} className='todo-text'>{todo.text}</span>
+                  <div style={{alignItems: 'center', display: 'flex'}}>
+                    <img className='todolist-circle' src={circle}/>
+                    <input 
+                      type="checkbox" 
+                      className="todo-checkbox" 
+                      onChange={() => toggleTodoCompletion(index)}
+                    />
+                    <span style={todoTextColor} className='todo-text'>{todo.text}</span>
+                  </div>
+                  {/* cross button ----------------------------------------------- */}
+                  <button onClick={() => removeTodo(index)} className='cross-btn'>
+                    <img className='cross-img' src={cross} alt="crossimg" />
+                  </button>
                 </div>
                 <div style={lineBackgroundColor} className="line"></div>
-              </>
+              </div>
               
             ))}
             <div style={taskBackgroundColor} className="tasks-footer">
